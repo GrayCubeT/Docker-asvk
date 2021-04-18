@@ -1,0 +1,18 @@
+version: "3"
+services:
+  server:
+    build: server/
+    environment:
+      - FLASK_APP=server.py
+      - FLASK_ENV=development
+    
+    ports:
+      - "5000:5000"
+
+  client:
+    build: client/
+
+    network_mode: host
+
+    depends_on:
+      - server
